@@ -1,10 +1,9 @@
 package Utils;
+import Hooks.Hooks;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 
@@ -14,7 +13,8 @@ import java.time.Duration;
 
 public class UtilMethods {
     SoftAssert softAssert = new SoftAssert();
-    private WebDriver driver;
+    Hooks hook;
+    public WebDriver driver = hook.getDriver();
     long Timeout = 25;
 
     public UtilMethods(WebDriver driver) {
@@ -27,26 +27,6 @@ public class UtilMethods {
         }
     }
 
-    public void waitForVisibilityXpath(String xpath) {
-        try {
-            new WebDriverWait(driver, Duration.ofSeconds(Timeout)).until(ExpectedConditions
-                    .visibilityOfElementLocated(By.xpath(xpath)));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.toString());
-        }
-    }
-
-    public void waitForVisibilityName(String name) {
-        try {
-            new WebDriverWait(driver, Duration.ofSeconds(Timeout)).until(ExpectedConditions
-                    .visibilityOfElementLocated(By.name(name)));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.toString());
-        }
-    }
-
     public void clickByXpath(String Xpath) {
         try {
             new WebDriverWait(driver, Duration.ofSeconds(Timeout)).until(ExpectedConditions
@@ -54,7 +34,6 @@ public class UtilMethods {
             driver.findElement(By.xpath(Xpath)).click();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.toString());
         }
     }
 
@@ -65,7 +44,6 @@ public class UtilMethods {
             driver.findElement(By.name(name)).click();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.toString());
         }
     }
 
@@ -78,7 +56,6 @@ public class UtilMethods {
             element.sendKeys(value);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.toString());
         }
     }
 
@@ -91,7 +68,6 @@ public class UtilMethods {
             element.sendKeys(value);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.toString());
         }
     }
 
@@ -104,13 +80,12 @@ public class UtilMethods {
             softAssert.assertEquals(actualText, expectedValue);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println(e.toString());
         }
     }
 
-    /*public void TakeScreenshot(WebDriver dr,String filePath) throws IOException {
+    public void TakeScreenshot(String filePath) {
         try {
-            TakesScreenshot ts = (TakesScreenshot) dr;
+            TakesScreenshot ts = (TakesScreenshot) driver;
             File SrcFile = ts.getScreenshotAs(OutputType.FILE);
             File DestFile = new File(filePath);
             FileUtils.copyFile(SrcFile, DestFile);
@@ -118,7 +93,7 @@ public class UtilMethods {
         } catch (Exception e) {
             System.out.println("Error capturing screenshot: " + e.getMessage());
         }
-    }*/
+    }
 }
 
 

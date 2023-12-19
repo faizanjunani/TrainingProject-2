@@ -17,7 +17,7 @@ public class MyStepdefs {
     public WebDriver driver = hook.getDriver();
     LoginPage lp = new LoginPage(driver);
     TimeoffPage tp = new TimeoffPage(driver);
-  //  TimesheetPage tsp = new TimesheetPage(driver);
+    TimesheetPage tsp = new TimesheetPage(driver);
 
 
     @Given("user is present on Atlas Login page")
@@ -72,7 +72,7 @@ public class MyStepdefs {
         tp.timeOffSubmissionSuccessful();
     }
 
-  /*  @Given("user is present on Time Management tab")
+    @Given("user is present on Time Management tab")
     public void userIsPresentOnTimeManagementTab() {
         tsp.userPresentonTimeManagement();
     }
@@ -80,6 +80,7 @@ public class MyStepdefs {
     @When("user vists Timesheet tab")
     public void userVistsTimesheetTab() throws InterruptedException {
         tsp.navigateToTimesheetTab();
+        tsp.verifyUserPresentonTimesheetTab();
     }
 
     @Then("user opens the timesheet date range")
@@ -101,5 +102,5 @@ public class MyStepdefs {
     @Then("user confirms his timesheet entry")
     public void userConfirmsHisTimesheetEntry() {
         tsp.confirmTimesheet();
-    }*/
+    }
 }

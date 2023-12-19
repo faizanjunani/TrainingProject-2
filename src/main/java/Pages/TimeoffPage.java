@@ -1,5 +1,6 @@
 package Pages;
 
+import Hooks.Hooks;
 import Locators.TimeoffLocators;
 import Utils.UtilMethods;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +10,10 @@ import java.io.IOException;
 
 public class TimeoffPage {
 
+    Hooks hook;
+    public WebDriver driver = hook.getDriver();
     TimeoffLocators tl = new TimeoffLocators();
     UtilMethods util = new UtilMethods(driver);
-    private static WebDriver driver;
     public TimeoffPage(WebDriver driver)
     {
         this.driver = driver;
@@ -21,7 +23,7 @@ public class TimeoffPage {
         util.clickByXpath(tl.accessTimeManagementTab);
         util.AssertElementTextXpath
                 (tl.userPresentOnTimeManagement, "Time Available");
-      //  util.TakeScreenshot(driver,"C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\Screenshots");
+        util.TakeScreenshot("C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\test1.png");
     }
     public void navigateToTimeoffScreen()
     {
@@ -29,7 +31,7 @@ public class TimeoffPage {
     }
     public void userIsPresentonRequestTimeoff() throws IOException {
         util.AssertElementTextXpath(tl.userPresentOnTimeoff, "Request Time Off");
-      //  util.TakeScreenshot(driver,"C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\Screenshots");
+        util.TakeScreenshot("C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\test2.png");
     }
     public void selectTimeoffType()
     {
@@ -53,7 +55,7 @@ public class TimeoffPage {
     public void timeOffSubmissionSuccessful() throws IOException {
         util.AssertElementTextXpath
                 (tl.timeOffSubmittedSuccessfully,"Request successfully submitted.");
-      //  util.TakeScreenshot(driver,"C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\Screenshots");
+        util.TakeScreenshot("C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\test3.png");
     }
 
 

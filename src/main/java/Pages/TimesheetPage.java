@@ -1,6 +1,7 @@
 package Pages;
 
 
+import Hooks.Hooks;
 import Locators.TimeoffLocators;
 import Locators.TimesheetLocators;
 import Utils.UtilMethods;
@@ -8,10 +9,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class TimesheetPage {
+    Hooks hook;
+    public WebDriver driver = hook.getDriver();
     TimesheetLocators tsl = new TimesheetLocators();
     TimeoffLocators tl = new TimeoffLocators();
     UtilMethods util = new UtilMethods(driver);
-    private static WebDriver driver;
 
 
 
