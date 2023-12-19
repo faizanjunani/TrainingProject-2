@@ -1,6 +1,5 @@
 package Hooks;
 
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +9,7 @@ public class Hooks {
 
     private static WebDriver driver;
 
-    private Hooks(){};
+    private Hooks(){}
 
     public static WebDriver getDriver(){
         WebDriverManager.chromedriver().setup();
