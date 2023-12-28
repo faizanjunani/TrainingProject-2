@@ -5,7 +5,7 @@ Feature: Request Timeoff
 
   Scenario: Submit a PTO Request
     Given user is present on Atlas Login page
-    When user logins to Atlas with username as "pnev@yopmail.com" and password as "Atlas@123"
+    When user logins to Atlas with username and password
     Then user navigates to Time management tab
     When user clicks the request timeoff button
     And user is present on request timeoff popup

@@ -8,8 +8,11 @@ import org.testng.asserts.SoftAssert;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 public class UtilMethods {
     SoftAssert softAssert = new SoftAssert();
@@ -93,6 +96,13 @@ public class UtilMethods {
         } catch (Exception e) {
             System.out.println("Error capturing screenshot: " + e.getMessage());
         }
+    }
+    public String getvaluesfromconfigfile(String value) throws IOException {
+        FileReader fr = new FileReader("C:\\Users\\FaizanJunani\\Desktop\\AutomationTraining\\TrainingProject-2\\TrainingProject\\src\\Config.properties");
+        Properties prop = new Properties();
+        prop.load(fr);
+        String valueconfig = prop.getProperty(value);
+        return valueconfig;
     }
 }
 

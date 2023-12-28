@@ -38,15 +38,15 @@ public class TimeoffPage {
         util.clickByXpath(tl.openTimeOffTypeDropdown);
         util.clickByXpath(tl.selectTimeOffType);
     }
-    public void selectTImeOffFromDate()
-    {
+    public void selectTImeOffFromDate(String fromDate) throws IOException {
+        String FromDate = util.getvaluesfromconfigfile(fromDate);
         util.clickByXpath(tl.openFromDateCalendar);
-        util.sendKeysXpath(tl.enterFromDate,"04 Jan 2024");
+        util.sendKeysXpath(tl.enterFromDate,FromDate);
     }
-    public void selectTimeOffToDate()
-    {
+    public void selectTimeOffToDate(String toDate) throws IOException {
+        String ToDate = util.getvaluesfromconfigfile(toDate);
         util.clickByXpath(tl.openToDateCalendar);
-        util.sendKeysXpath(tl.enterToDate,"05 Jan 2024");
+        util.sendKeysXpath(tl.enterToDate,ToDate);
     }
     public void submitTimeOffRequest()
     {

@@ -8,6 +8,8 @@ import Utils.UtilMethods;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
+
 public class TimesheetPage {
     Hooks hook;
     public WebDriver driver = hook.getDriver();
@@ -46,13 +48,13 @@ public class TimesheetPage {
     {
         util.clickByXpath(tsl.editTimesheet);
     }
-    public void enterStarTime(String startTime)
-    {
-        util.sendKeysXpath(tsl.addStartTime,startTime);
+    public void enterStarTime(String startTime) throws IOException {
+        String StartTime = util.getvaluesfromconfigfile(startTime);
+        util.sendKeysXpath(tsl.addStartTime,StartTime);
     }
-    public void enterEndTime(String endTime)
-    {
-        util.sendKeysXpath(tsl.addEndTime,endTime);
+    public void enterEndTime(String endTime) throws IOException {
+        String EndTime = util.getvaluesfromconfigfile(endTime);
+        util.sendKeysXpath(tsl.addEndTime,EndTime);
     }
     public void confirmTimesheet()
     {

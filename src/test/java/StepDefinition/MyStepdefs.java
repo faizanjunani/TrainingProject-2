@@ -3,6 +3,7 @@ package StepDefinition;
 import Pages.LoginPage;
 import Pages.TimeoffPage;
 import Pages.TimesheetPage;
+import Utils.UtilMethods;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -18,17 +19,22 @@ public class MyStepdefs {
     LoginPage lp = new LoginPage(driver);
     TimeoffPage tp = new TimeoffPage(driver);
     TimesheetPage tsp = new TimesheetPage(driver);
+    UtilMethods util = new UtilMethods(driver);
+
+    public MyStepdefs() throws IOException {
+    }
 
 
     @Given("user is present on Atlas Login page")
     public void userIsPresentOnAtlasLoginPage() throws IOException {
+        lp.setURL("URL");
         lp.userIsPresentOnLoginPage();
     }
 
-    @When("user logins to Atlas with username as {string} and password as {string}")
-    public void userLoginsToAtlasWithUsernameAsAndPasswordAs(String username, String password){
-        lp.setUserName(username);
-        lp.setPassword(password);
+    @When("user logins to Atlas with username and password")
+    public void userLoginsToAtlasWithUsernameAsAndPasswordAs() throws IOException {
+        lp.setUserName("Email");
+        lp.setPassword("Password");
         lp.loginToPortal();
 
     }
@@ -53,13 +59,13 @@ public class MyStepdefs {
     }
 
     @And("user selects option for FromDate")
-    public void userSelectsOptionForFromDate() {
-        tp.selectTImeOffFromDate();
+    public void userSelectsOptionForFromDate() throws IOException {
+        tp.selectTImeOffFromDate("PTOFromDate");
     }
 
     @And("user selects option for ToDate")
-    public void userSelectsOptionForToDate() {
-        tp.selectTimeOffToDate();
+    public void userSelectsOptionForToDate() throws IOException {
+        tp.selectTimeOffToDate("PTOToDate");
     }
 
     @And("user clicks the request button")
@@ -93,10 +99,10 @@ public class MyStepdefs {
         tsp.editTimesheet();
     }
 
-    @Then("user enters the starttime as {string} and endtime as {string} for that date")
-    public void userEntersTheStarttimeAsAndEndtimeAsForThatDate(String startTime, String endTime) {
-     tsp.enterStarTime(startTime);
-     tsp.enterEndTime(endTime);
+    @Then("user enters the starttime and endtime for that date")
+    public void userEntersTheStarttimeAsAndEndtimeAsForThatDate() throws IOException {
+     tsp.enterStarTime("TimesheetStartTime");
+     tsp.enterEndTime("TimesheetEndTime");
     }
 
     @Then("user confirms his timesheet entry")
